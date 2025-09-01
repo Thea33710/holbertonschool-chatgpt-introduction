@@ -33,7 +33,11 @@ def main():
             amount = float(input("Enter the amount to deposit: $"))
             cb.deposit(amount)
         elif action.lower() == 'withdraw':
-            amount = float(input("Enter the amount to withdraw: $"))
+            try:
+                amount = float(input("Enter the amount to withdraw: $"))
+            except ValueError:
+                print("Invalid input. Please enter a numeric value.")
+                continue
             cb.withdraw(amount)
         elif action.lower() == 'balance':
             cb.get_balance()
