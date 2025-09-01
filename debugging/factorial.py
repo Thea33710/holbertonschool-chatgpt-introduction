@@ -1,9 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 import sys
 
 def factorial(n):
-    if n < 0:
-        raise ValueError("La factorielle n'est pas définie pour les nombres négatifs.")
+    """
+    Calcule le factoriel d'un entier non négatif n de manière itérative.
+    """
     result = 1
     while n > 1:
         result *= n
@@ -16,8 +17,11 @@ if __name__ == "__main__":
         sys.exit(1)
 
     try:
-        n = int(sys.argv[1])
-        print(factorial(n))
+        number = int(sys.argv[1])
+        if number < 0:
+            raise ValueError("Le nombre doit être positif ou nul.")
+        f = factorial(number)
+        print(f)
     except ValueError as e:
-        print("Erreur:", e)
+        print("Erreur :", e)
         sys.exit(1)

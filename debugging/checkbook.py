@@ -1,21 +1,16 @@
 class Checkbook:
-    """
-    A simple checkbook management class that supports deposits, withdrawals,
-    and balance checking.
-    """
-
     def __init__(self):
         """
-        Initializes a new Checkbook instance with a zero balance.
+        Initialise le solde du compte à 0.0.
         """
         self.balance = 0.0
 
     def deposit(self, amount):
         """
-        Adds the specified amount to the current balance.
-
-        Parameters:
-        amount (float): The amount of money to deposit (must be non-negative).
+        Ajoute un montant au solde du compte.
+        
+        Args:
+            amount (float): Montant à déposer.
         """
         self.balance += amount
         print("Deposited ${:.2f}".format(amount))
@@ -23,10 +18,10 @@ class Checkbook:
 
     def withdraw(self, amount):
         """
-        Deducts the specified amount from the balance if sufficient funds are available.
-
-        Parameters:
-        amount (float): The amount of money to withdraw (must be non-negative).
+        Retire un montant du solde si les fonds sont suffisants.
+        
+        Args:
+            amount (float): Montant à retirer.
         """
         if amount > self.balance:
             print("Insufficient funds to complete the withdrawal.")
@@ -37,50 +32,42 @@ class Checkbook:
 
     def get_balance(self):
         """
-        Displays the current account balance.
+        Affiche le solde actuel.
         """
         print("Current Balance: ${:.2f}".format(self.balance))
 
 
 def main():
     """
-    Main loop for interacting with the Checkbook. Supports:
-    - deposit
-    - withdraw
-    - balance
-    - exit
+    Fonction principale qui gère l'interaction utilisateur pour 
+    déposer, retirer, consulter le solde ou quitter.
     """
     cb = Checkbook()
     while True:
-        action = input("\nWhat would you like to do? (deposit, withdraw, balance, exit): ").strip().lower()
-
+        action = input("What would you like to do? (deposit, withdraw, balance, exit): ").strip().lower()
         if action == 'exit':
             print("Goodbye!")
             break
-
         elif action == 'deposit':
             try:
                 amount = float(input("Enter the amount to deposit: $"))
-                if amount < 0:
-                    print("Amount must be non-negative.")
+                if amount <= 0:
+                    print("Please enter a positive amount.")
                 else:
                     cb.deposit(amount)
             except ValueError:
-                print("Invalid input. Please enter a valid number.")
-
+                print("Invalid amount. Please enter a number.")
         elif action == 'withdraw':
             try:
                 amount = float(input("Enter the amount to withdraw: $"))
-                if amount < 0:
-                    print("Amount must be non-negative.")
+                if amount <= 0:
+                    print("Please enter a positive amount.")
                 else:
                     cb.withdraw(amount)
             except ValueError:
-                print("Invalid input. Please enter a valid number.")
-
+                print("Invalid amount. Please enter a number.")
         elif action == 'balance':
             cb.get_balance()
-
         else:
             print("Invalid command. Please try again.")
 
