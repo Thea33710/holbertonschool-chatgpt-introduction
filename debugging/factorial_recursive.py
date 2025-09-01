@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 
+
 def factorial(n):
     """
     Function Description:
@@ -24,6 +25,7 @@ def factorial(n):
     else:
         return n * factorial(n-1)
 
+
 def main():
     if len(sys.argv) != 2:
         print("Usage: {} <non-negative integer>".format(sys.argv[0]))
@@ -38,6 +40,7 @@ def main():
 
     f = factorial(num)
     print(f)
+
 
 if __name__ == "__main__":
     main()

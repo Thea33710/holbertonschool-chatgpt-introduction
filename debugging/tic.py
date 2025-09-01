@@ -3,6 +3,7 @@ def print_board(board):
         print(" | ".join(row))
         print("-" * 5)
 
+
 def check_winner(board):
     # Check rows
     for row in board:
@@ -11,7 +12,8 @@ def check_winner(board):
 
     # Check columns
     for col in range(len(board[0])):
-        if board[0][col] == board[1][col] == board[2][col] and board[0][col] != " ":
+        if (board[0][col] == board[1][col] == board[2][col] and
+                board[0][col] != " "):
             return True
 
     # Check diagonals
@@ -23,6 +25,7 @@ def check_winner(board):
 
     return False
 
+
 def tic_tac_toe():
     board = [[" "]*3 for _ in range(3)]
     player = "X"
@@ -30,9 +33,13 @@ def tic_tac_toe():
     while True:
         print_board(board)
         try:
-            row = int(input(f"Enter row (0, 1, or 2) for player {player}: "))
-            col = int(input(f"Enter column (0, 1, or 2) for player {player}: "))
-            if row not in [0,1,2] or col not in [0,1,2]:
+            row = int(
+                input(f"Enter row (0, 1, or 2) for player {player}: ")
+            )
+            col = int(
+                input(f"Enter column (0, 1, or 2) for player {player}: ")
+            )
+            if row not in [0, 1, 2] or col not in [0, 1, 2]:
                 print("Invalid input. Please enter 0, 1, or 2.")
                 continue
             if board[row][col] == " ":
@@ -56,5 +63,6 @@ def tic_tac_toe():
             break
 
         player = "O" if player == "X" else "X"
+
 
 tic_tac_toe()
