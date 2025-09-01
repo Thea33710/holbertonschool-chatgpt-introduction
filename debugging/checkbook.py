@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 class Checkbook:
     def __init__(self):
         self.balance = 0.0
@@ -23,8 +24,8 @@ def main():
     cb = Checkbook()
     while True:
         action = input(
-                "What would you like to do? "
-                "(deposit, withdraw, balance, exit): "
+            "What would you like to do? "
+            "(deposit, withdraw, balance, exit): "
         )
         if action.lower() == 'exit':
             break
